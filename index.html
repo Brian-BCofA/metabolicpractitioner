@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FAF9F6">
+<meta name="description" content="Your bariatric pipeline is leaking. Here's where — and how much it's costing you.">
+<title>Your Bariatric Pipeline Is Leaking — Metabolic Practitioner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF9F6;
+    --paper-dark: #F5F3EF;
+    --ink: #1C1917;
+    --body: #44403C;
+    --muted: #78716C;
+    --faint: #A8A29E;
+    --rule: #D6D3D1;
+    --rule-light: #E7E5E4;
+    --rust: #9C4221;
+    --rust-dim: rgba(156, 66, 33, 0.08);
+    --rust-border: rgba(156, 66, 33, 0.2);
+    --callout-bg: #FEFBF6;
+    --callout-border: #E8DCCC;
+
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Source Sans 3', -apple-system, sans-serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --content-width: 680px;
+    --wide-width: 820px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-serif);
+    background: var(--paper);
+    color: var(--body);
+    font-size: 18px;
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--rust); text-decoration: none; transition: color 0.2s ease; touch-action: manipulation; }
+  a:hover { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 2px; }
+
+  .skip-link {
+    position: absolute; top: -100px; left: 16px;
+    background: var(--ink); color: var(--paper);
+    padding: 8px 16px; border-radius: 0 0 6px 6px;
+    font-size: 14px; font-family: var(--font-sans);
+    z-index: 100; transition: top 0.2s var(--ease-out);
+  }
+  .skip-link:focus-visible { top: 0; }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 0 24px;
+  }
+  .topbar-inner {
+    max-width: var(--wide-width);
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-name {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .topbar-email {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--faint);
+    cursor: pointer;
+  }
+  .topbar-email:hover { color: var(--rust); }
+
+  /* ============ ARTICLE HEADER ============ */
+  .article-header {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 72px 24px 0;
+  }
+  .article-category {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 0.6s var(--ease-out) 0.1s forwards;
+  }
+  .article-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4.5vw, 44px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+    text-wrap: balance;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeIn 0.6s var(--ease-out) 0.4s forwards;
+  }
+  .meta-author {
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .meta-sep {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--faint);
+    flex-shrink: 0;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ ARTICLE BODY ============ */
+  .article {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .article p {
+    margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 1.78;
+    color: var(--body);
+  }
+  .article p:last-child { margin-bottom: 0; }
+
+  .article h2 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin: 56px 0 24px;
+    text-wrap: balance;
+  }
+  .article h2:first-child { margin-top: 0; }
+
+  .article strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Opening paragraph - larger */
+  .article-lede {
+    font-size: 20px;
+    line-height: 1.72;
+    color: var(--ink);
+  }
+  .article-lede::first-line {
+    /* Subtle emphasis on first line */
+  }
+
+  /* Section breaks */
+  .section-break {
+    text-align: center;
+    margin: 48px 0;
+    color: var(--faint);
+    font-size: 18px;
+    letter-spacing: 8px;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 48px -32px;
+    padding: 32px 40px;
+    border-left: 3px solid var(--rust);
+    background: var(--rust-dim);
+    border-radius: 0 8px 8px 0;
+    position: relative;
+  }
+  .pull-quote p {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Stat callout */
+  .stat-callout {
+    margin: 48px 0;
+    padding: 32px;
+    background: var(--callout-bg);
+    border: 1px solid var(--callout-border);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--rust);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Pre-op timeline visualization */
+  .timeline {
+    margin: 40px 0 48px;
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rust), var(--rule));
+    border-radius: 1px;
+  }
+  .timeline-step {
+    position: relative;
+    padding: 0 0 28px 24px;
+  }
+  .timeline-step:last-child { padding-bottom: 0; }
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--rust);
+  }
+  .timeline-step-title {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .timeline-step-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0;
+  }
+  .timeline-step-risk {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--rust);
+    background: var(--rust-dim);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 6px;
+  }
+
+  /* Approach cards (what best practices do) */
+  .approach-grid {
+    margin: 32px 0 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .approach-card {
+    padding: 24px 28px;
+    background: var(--paper);
+    border: 1px solid var(--rule-light);
+    border-radius: 10px;
+    transition: border-color 0.2s ease;
+  }
+  .approach-card:hover { border-color: var(--rust-border); }
+  .approach-card h3 {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .approach-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--body);
+    margin: 0;
+  }
+
+  /* ============ BYLINE CTA ============ */
+  .byline-cta {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+  .byline-cta-inner {
+    border-top: 1px solid var(--rule);
+    padding-top: 40px;
+  }
+  .byline-cta-inner p {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .byline-cta-inner a {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--rust);
+  }
+  .byline-cta-inner a:hover { color: var(--ink); }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    border-top: 1px solid var(--rule-light);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .footer span {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--faint);
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .article-header { padding-top: 48px; }
+    .article-header h1 { font-size: 30px; }
+    .pull-quote { margin: 40px 0; padding: 24px; }
+    .pull-quote p { font-size: 19px; }
+    .stat-callout { grid-template-columns: 1fr; gap: 20px; }
+    .stat-number { font-size: 30px; }
+    .article h2 { font-size: 24px; margin-top: 44px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .article-header h1 { font-size: 26px; }
+    .article-meta { flex-wrap: wrap; gap: 8px; }
+    .meta-sep { display: none; }
+    .topbar-email span { display: none; }
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-name">Metabolic Practitioner</span>
+    <a href="mailto:david@metabolicpractitioner.com" class="topbar-email" aria-label="Email David Harmon at Metabolic Practitioner">
+      <span>david@metabolicpractitioner.com</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <p class="article-category">Pre-Op Patient Retention</p>
+    <h1>Your bariatric pipeline is leaking. Here&rsquo;s where&nbsp;&mdash;&nbsp;and how much it&rsquo;s costing&nbsp;you.</h1>
+    <div class="article-meta">
+      <span class="meta-author">David Harmon</span>
+      <span class="meta-sep" aria-hidden="true"></span>
+      <span>6 min read</span>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <article class="article" aria-labelledby="article-heading">
+    <h2 id="article-heading" class="sr-only">Full Article</h2>
+
+    <!-- THE OPENING -->
+    <p class="article-lede reveal">She was ready. Forty-three years old, BMI of 47, type&nbsp;2 diabetes diagnosed eighteen months ago, and a referral from her PCP who&rsquo;d finally said the words: &ldquo;I think it&rsquo;s time to talk about surgery.&rdquo;</p>
+
+    <p class="reveal">She came to the initial consult engaged and motivated. She asked good questions. She left with a folder of paperwork and a supervised weight management schedule. She completed month one. She completed month two.</p>
+
+    <p class="reveal">Then she missed her third nutrition visit. Nobody called for eleven days. When the coordinator finally reached out, the patient said she&rsquo;d &ldquo;been busy&rdquo; and would reschedule. She never did. By month four, her chart was inactive.</p>
+
+    <p class="reveal">That patient cost the practice roughly $800 in marketing and staff time to acquire. The surgery she would have had was worth $15,000 to $25,000 in combined professional and facility fees. She didn&rsquo;t choose a competitor. She didn&rsquo;t decide against surgery. She just fell through a crack&nbsp;&mdash;&nbsp;the same crack that swallows 30 to 50 percent of the bariatric pipeline at most programs in the&nbsp;country.</p>
+
+    <div class="section-break reveal" aria-hidden="true">&bull; &bull; &bull;</div>
+
+    <!-- THE GAUNTLET -->
+    <h2 class="reveal">The pre-op obstacle course</h2>
+
+    <p class="reveal">Before a bariatric patient reaches the operating room, they have to clear a series of requirements that most other surgical specialties never deal with. The specifics vary by payer, but the general pattern looks like&nbsp;this:</p>
+
+    <div class="timeline reveal">
+      <div class="timeline-step">
+        <div class="timeline-step-title">Supervised weight management</div>
+        <p class="timeline-step-desc">Three to six months of documented monthly visits with a physician or dietitian. Miss a month, and many insurers reset the clock.</p>
+        <span class="timeline-step-risk">Highest dropout risk</span>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step-title">Psychological evaluation</div>
+        <p class="timeline-step-desc">Behavioral health assessment screening for eating disorders, untreated mental health conditions, and surgical readiness. Wait times for qualified bariatric psych providers can stretch to six weeks or&nbsp;more.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step-title">Nutrition counseling</div>
+        <p class="timeline-step-desc">One or more sessions with a registered dietitian, separate from supervised weight management. Often requires a different provider and a different&nbsp;appointment.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step-title">Cardiac clearance</div>
+        <p class="timeline-step-desc">An EKG at minimum, frequently a cardiology consult or stress test. Another referral, another scheduler, another waiting&nbsp;room.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step-title">Sleep study</div>
+        <p class="timeline-step-desc">Polysomnography to screen for obstructive sleep apnea. Most patients need this. Scheduling through a sleep lab adds another two to four&nbsp;weeks.</p>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step-title">Upper endoscopy (EGD)</div>
+        <p class="timeline-step-desc">Increasingly standard to screen for hiatal hernia and Barrett&rsquo;s esophagus. Yet another procedure to schedule, prep for, and recover&nbsp;from.</p>
+      </div>
+    </div>
+
+    <p class="reveal">Each step involves a different provider, a different office, a different phone number, and a different timeline. Every handoff is a point where a motivated patient can quietly disengage&nbsp;&mdash;&nbsp;not because they changed their mind, but because the process wore them down and nobody noticed them&nbsp;drifting.</p>
+
+    <div class="section-break reveal" aria-hidden="true">&bull; &bull; &bull;</div>
+
+    <!-- THE MATH -->
+    <h2 class="reveal">What this actually costs</h2>
+
+    <p class="reveal">Take a practice that consults 40 new bariatric patients per month. That&rsquo;s a strong volume&nbsp;&mdash;&nbsp;it means the marketing is working and the demand is&nbsp;there.</p>
+
+    <p class="reveal">If that practice converts 55 percent of consults to surgery&nbsp;&mdash;&nbsp;a respectable rate&nbsp;&mdash;&nbsp;that&rsquo;s 22 cases per month. The other 18 patients represent sunk costs: marketing dollars to generate the lead, staff time for the initial consult, insurance verification, and early&nbsp;follow-ups.</p>
+
+    <div class="stat-callout reveal">
+      <div class="stat-item">
+        <div class="stat-number">18</div>
+        <div class="stat-label">patients lost per month<br>at 55% conversion</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$172K</div>
+        <div class="stat-label">in wasted acquisition<br>costs per year</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$108K</div>
+        <div class="stat-label">in recoverable monthly<br>revenue (6 additional cases)</div>
+      </div>
+    </div>
+
+    <p class="reveal">At a conservative $800 per patient in acquisition cost, those 18 lost patients represent $14,400 per month in wasted spend. That&rsquo;s $172,800 per year&nbsp;&mdash;&nbsp;before you account for the surgical revenue that walked out the door with&nbsp;them.</p>
+
+    <p class="reveal">If even a third of those patients could be recovered&nbsp;&mdash;&nbsp;not through harder selling, but simply through consistent follow-up at the moments they&rsquo;re most likely to disengage&nbsp;&mdash;&nbsp;that&rsquo;s six additional surgeries per month. At an average combined reimbursement of $18,000 per case, that&rsquo;s $108,000 in monthly revenue from patients you already paid to&nbsp;acquire.</p>
+
+    <div class="pull-quote reveal">
+      <p>Most practices don&rsquo;t track this number. They know patients drop off. They don&rsquo;t know how many, at which step, or what it&rsquo;s costing them&nbsp;&mdash;&nbsp;because nothing in their current system is designed to surface that&nbsp;information.</p>
+    </div>
+
+    <div class="section-break reveal" aria-hidden="true">&bull; &bull; &bull;</div>
+
+    <!-- WHY IT HAPPENS -->
+    <h2 class="reveal">The gap isn&rsquo;t clinical. It&rsquo;s operational.</h2>
+
+    <p class="reveal">The patients who drop out of the pre-op process almost never do so because they&rsquo;ve decided against surgery. Surveys of bariatric program attrition consistently point to the same culprits: logistical confusion about next steps, long gaps between appointments with no contact from the practice, difficulty scheduling with external providers, and a general sense of being &ldquo;on their own&rdquo; during what is already an emotionally complicated&nbsp;decision.</p>
+
+    <p class="reveal">Inside the practice, the root cause is nearly always the same: no unified system for tracking where each patient is in their pre-op&nbsp;journey.</p>
+
+    <p class="reveal">The EHR tracks clinical encounters but isn&rsquo;t built to monitor insurance milestones or flag patients who are falling behind schedule. The patient coordinator maintains a spreadsheet&nbsp;&mdash;&nbsp;or several spreadsheets&nbsp;&mdash;&nbsp;that have to be manually updated after every visit, every external clearance, every insurance authorization. Outreach is reactive: someone notices a patient hasn&rsquo;t been in for a while, and maybe they call. Maybe they don&rsquo;t. There&rsquo;s no automated trigger, no escalation protocol, no visibility into who&rsquo;s on track and who&rsquo;s quietly slipping&nbsp;away.</p>
+
+    <p class="reveal">The result is a system that depends entirely on individual staff members remembering to check on specific patients at specific intervals. In a busy surgical practice, that&rsquo;s not a system. It&rsquo;s a&nbsp;hope.</p>
+
+    <div class="section-break reveal" aria-hidden="true">&bull; &bull; &bull;</div>
+
+    <!-- WHAT THE BEST PRACTICES DO DIFFERENTLY -->
+    <h2 class="reveal">Closing the gaps</h2>
+
+    <p class="reveal">The bariatric programs with the highest consult-to-surgery conversion rates haven&rsquo;t hired twice as many coordinators. They haven&rsquo;t added more phone calls to an already overloaded staff. They&rsquo;ve done something more structural: they&rsquo;ve replaced the manual tracking patchwork with an operational layer that makes patient attrition visible&nbsp;&mdash;&nbsp;and&nbsp;preventable.</p>
+
+    <div class="approach-grid reveal">
+      <div class="approach-card">
+        <h3>Milestone-based tracking</h3>
+        <p>Every patient has a clear map of their required pre-op steps with expected completion dates. The system knows that Patient&nbsp;A needs her psych eval by week&nbsp;8 and her sleep study by week&nbsp;12. If either one falls behind schedule, it surfaces&nbsp;&mdash;&nbsp;automatically, not when someone happens to check a&nbsp;spreadsheet.</p>
+      </div>
+      <div class="approach-card">
+        <h3>Proactive gap outreach</h3>
+        <p>When a patient misses a supervised weight management appointment or goes more than two weeks without scheduling a required clearance, the system triggers outreach within 48&nbsp;hours&nbsp;&mdash;&nbsp;not three weeks later when the coordinator finally notices. The difference between a 48-hour follow-up and a three-week follow-up is often the difference between a patient who reschedules and a patient who&rsquo;s&nbsp;gone.</p>
+      </div>
+      <div class="approach-card">
+        <h3>A single longitudinal view</h3>
+        <p>One screen that shows every active pre-op patient, where they are in the process, what&rsquo;s overdue, and what&rsquo;s coming next. Not a spreadsheet. Not a stack of charts. A living, filterable view that any team member can pull up in seconds and know exactly where things&nbsp;stand.</p>
+      </div>
+    </div>
+
+    <p class="reveal">None of this requires more staff. It requires better infrastructure. The practices that have built this capability aren&rsquo;t just retaining more patients&nbsp;&mdash;&nbsp;they&rsquo;re doing it with the same team, running at the same capacity, with significantly less daily operational&nbsp;stress.</p>
+
+  </article>
+
+  <!-- BYLINE CTA -->
+  <div class="byline-cta reveal">
+    <div class="byline-cta-inner">
+      <p>David Harmon works with bariatric practices on operational systems that reduce patient attrition and increase consult-to-surgery conversion. If your program is losing patients between the initial consult and the operating room, a conversation might be&nbsp;worthwhile. <a href="mailto:david@metabolicpractitioner.com">david@metabolicpractitioner.com</a></p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Metabolic Practitioner</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
